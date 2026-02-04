@@ -1,162 +1,100 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded",()=>{
 
-// ===== PREGUNTAS =====
-const QUESTIONS = [
-  {
-    title: "mi tuly bb 💖",
-    subtitle: "Tengo algo para preguntarte…",
-    q: "¿Querés pasar San Valentín conmigo? 💘"
-  },
-  {
-    title: "daleeee amorrrrrrrr 💖",
-    subtitle: "Fijate bien ee.... 😌",
-    q: "¿Estás segura de lo que estás eligiendo? 💖"
-  },
-  {
-    title: "💖",
-    subtitle: "Yo creo qye ya me sé la respuesta 😏",
-    q: "Yo sé que no me podés decir que no… dale tulipán 💕"
-  }
+const QUESTIONS=[
+"¿Querés tener una cita y pasar San Valentín conmigo? 💘",
+"¿Estás segura de lo que estás eligiendo? 💖",
+"Yo sé que no me podés decir que no… dale tulipán 💕"
 ];
 
-const PHOTOS = [
-  "imagen/foto1.jpg",
-  "imagen/foto2.jpg",
-  "imagen/foto3.jpg",
-  "imagen/foto4.jpg",
-  "imagen/foto5.jpg"
+const PHOTOS=[
+"img/foto1.jpg",
+"img/foto2.jpg",
+"img/foto3.jpg",
+"img/foto4.jpg",
+"img/foto5.jpg"
 ];
 
-// ===== ELEMENTOS =====
-const titleEl = document.getElementById("title");
-const subtitleEl = document.getElementById("subtitle");
-const qTextEl = document.getElementById("qText");
-const qStepEl = document.getElementById("qStep");
+let index=0;
 
-const btnYes = document.getElementById("btnYes");
-const btnNo = document.getElementById("btnNo");
-
-const finalOverlay = document.getElementById("finalOverlay");
-const finalImg = document.getElementById("finalImg");
-
-const photoField = document.getElementById("photoField");
-const heartsWrap = document.getElementById("hearts");
-
-let idx = 0;
-
-
-// ===== FUNCIONES =====
-
-function shuffle(arr){
-  return arr.sort(()=>Math.random()-0.5);
-}
+const qText=document.getElementById("qText");
+const qStep=document.getElementById("qStep");
+const btnYes=document.getElementById("btnYes");
+const btnNo=document.getElementById("btnNo");
+const finalOverlay=document.getElementById("finalOverlay");
+const finalImg=document.getElementById("finalImg");
+const closeFinal=document.getElementById("closeFinal");
+const photoField=document.getElementById("photoField");
+const hearts=document.getElementById("hearts");
 
 function render(){
-  const cur = QUESTIONS[idx];
-  titleEl.textContent = cur.title;
-  subtitleEl.textContent = cur.subtitle;
-  qTextEl.textContent = cur.q;
-  qStepEl.textContent = `Pregunta ${idx+1} de ${QUESTIONS.length}`;
-
-  btnYes.style.transform = `scale(${1 + idx*0.2})`;
+qText.textContent=QUESTIONS[index];
+qStep.textContent=`Pregunta ${index+1} de ${QUESTIONS.length}`;
 }
 
+btnYes.onclick=()=>{
+spawnHearts(10);
+index++;
 
-// ===== BOTON SI =====
-btnYes.addEventListener("click", ()=>{
-  spawnHearts(8);
+if(index>=QUESTIONS.length){
+finalOverlay.style.display="grid";
+finalImg.src=PHOTOS[Math.floor(Math.random()*PHOTOS.length)];
+}else{
+render();
+}
+};
 
-  idx++;
+btnNo.onmouseover=()=>{
+btnNo.style.position="fixed";
+btnNo.style.left=Math.random()*window.innerWidth+"px";
+btnNo.style.top=Math.random()*window.innerHeight+"px";
+};
 
-  if(idx >= QUESTIONS.length){
-    finalOverlay.style.display="grid";
+function buildPhotos(){
+const pos=[
+["5vw","10vh"],
+["70vw","15vh"],
+["8vw","70vh"],
+["75vw","65vh"],
+["40vw","5vh"]
+];
 
-    const randomPhoto = PHOTOS[Math.floor(Math.random()*PHOTOS.length)];
-    finalImg.src = randomPhoto;
+PHOTOS.sort(()=>Math.random()-0.5);
 
-  } else {
-    render();
-  }
-});
+for(let i=0;i<5;i++){
+let fig=document.createElement("figure");
+fig.className="polaroid";
+fig.style.left=pos[i][0];
+fig.style.top=pos[i][1];
+fig.style.setProperty("--rot",`${-15+Math.random()*30}deg`);
 
+let img=document.createElement("img");
+img.src=PHOTOS[i];
 
-// ===== BOTON NO =====
-btnNo.addEventListener("mouseover", moveNo);
-btnNo.addEventListener("click", moveNo);
-
-function moveNo(){
-  const x = Math.random()*window.innerWidth;
-  const y = Math.random()*window.innerHeight;
-
-  btnNo.style.position="fixed";
-  btnNo.style.left=x+"px";
-  btnNo.style.top=y+"px";
+fig.appendChild(img);
+photoField.appendChild(fig);
+}
 }
 
-
-// ===== FOTOS DISPERSAS =====
-function buildPolaroids(){
-
-  if(!photoField) return;
-
-  const fotos = shuffle([...PHOTOS]);
-
-  const posiciones = [
-    ["5vw","10vh"],
-    ["70vw","15vh"],
-    ["8vw","70vh"],
-    ["75vw","65vh"],
-    ["40vw","5vh"]
-  ];
-
-  for(let i=0;i<5;i++){
-
-    const fig = document.createElement("figure");
-    fig.className="polaroid";
-
-    fig.style.left = posiciones[i][0];
-    fig.style.top = posiciones[i][1];
-    fig.style.setProperty("--rot",`${-15+Math.random()*30}deg`);
-
-    const img = document.createElement("img");
-    img.src=fotos[i];
-
-    fig.appendChild(img);
-    photoField.appendChild(fig);
-  }
-}
-
-
-// ===== CORAZONES =====
 function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-
-  h.style.left=Math.random()*100+"vw";
-  h.style.top=(100+Math.random()*30)+"vh";
-  h.style.animationDuration=(6+Math.random()*10)+"s";
-
-  heartsWrap.appendChild(h);
-
-  setTimeout(()=>h.remove(),10000);
+let h=document.createElement("div");
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+h.style.top=(100+Math.random()*30)+"vh";
+h.style.animationDuration=(6+Math.random()*10)+"s";
+hearts.appendChild(h);
+setTimeout(()=>h.remove(),10000);
 }
 
 function spawnHearts(n){
-  for(let i=0;i<n;i++){
-    createHeart();
-  }
+for(let i=0;i<n;i++)createHeart();
 }
 
-function startHearts(){
-  for(let i=0;i<12;i++){
-    createHeart();
-  }
-}
-
-
-// ===== INICIO =====
-buildPolaroids();
-startHearts();
+buildPhotos();
+spawnHearts(12);
 render();
+
+closeFinal.onclick=()=>{
+finalOverlay.style.display="none";
+};
 
 });
