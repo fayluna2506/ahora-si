@@ -4,26 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>mi tuly bb 💖</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="estilos.css" />
 </head>
-  <div id="photoField" class="photo-field" aria-hidden="true"></div>
 
 <body>
-
   <!-- Corazones flotando -->
   <div id="hearts" aria-hidden="true"></div>
 
-  <!-- Fotos dispersas (se llenan por JS al azar) -->
+  <!-- Fotos dispersas (las crea el JS) -->
   <div class="photo-field" id="photoField" aria-hidden="true"></div>
 
   <main class="wrap">
     <section class="card">
       <div class="badge">💌 mi tuly bb</div>
-      <h1 id="title">Tengo algo para vos 💖</h1>
-      <p class="subtitle" id="subtitle">Te hago una pregunta…</p>
+
+      <h1 id="title">Tengo una cosita para vos 💖</h1>
+      <p class="subtitle" id="subtitle">Tengo algo para preguntarte…</p>
 
       <div class="question-box">
-        <p class="qtext" id="qText">¿Lista? 😌</p>
+        <p class="qtext" id="qText">¿queres saber jodida?😌</p>
         <p class="step" id="qStep">Pregunta 1 de 3</p>
       </div>
 
@@ -32,14 +31,14 @@
         <button class="btn no" id="btnNo">No 😭</button>
       </div>
 
-      <p class="hint" id="hint">"Fijate que pasa si tocas que no..-" 😌</p>
+      <p class="hint" id="hint"> ME VAS A DECIR QUE NO AMOR😌</p>
     </section>
   </main>
 
   <!-- FINAL -->
   <div class="overlay" id="finalOverlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
-      <h2 id="finalTitle">MENOS MAL QUE DIJISTE QUE SÍ 💞</h2>
+      <h2 id="finalTitle"> MENOS MAL QUE DIJISTE QUE SÍ... 💞</h2>
       <p id="finalText">Entonces queda confirmado… que vos y yo tenemos una cita 💖</p>
 
       <div class="final-photo">
@@ -50,12 +49,12 @@
     </div>
   </div>
 
-  <!-- Toast mini para cuando intenta NO -->
+  <!-- Toast -->
   <div class="toast" id="toast" aria-live="polite"></div>
 
   <!-- Confetti -->
   <canvas id="confetti"></canvas>
 
-  <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
