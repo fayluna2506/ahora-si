@@ -20,11 +20,11 @@ const QUESTIONS = [
 ];
 
 const PHOTOS = [
-  "img/foto1.jpg",
-  "img/foto2.jpg",
-  "img/foto3.jpg",
-  "img/foto4.jpg",
-  "img/foto5.jpg"
+   "imagen/foto1.jpg",
+  "imagen/foto2.jpg",
+  "imagen/foto3.jpg",
+  "imagen/foto4.jpg",
+  "imagen/foto5.jpg"
 ];
 
 // ===== ELEMENTOS =====
