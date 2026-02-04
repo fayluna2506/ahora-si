@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>mi tuly bb 💖</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Corazones flotando -->
+  <div id="hearts" aria-hidden="true"></div>
+
+  <!-- Fotos dispersas (se llenan por JS al azar) -->
+  <div class="photo-field" id="photoField" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="badge">💌 mi tuly bb</div>
+      <h1 id="title">Tengo algo para vos 💖</h1>
+      <p class="subtitle" id="subtitle">Te hago una pregunta…</p>
+
+      <div class="question-box">
+        <p class="qtext" id="qText">¿Lista? 😌</p>
+        <p class="step" id="qStep">Pregunta 1 de 3</p>
+      </div>
+
+      <div class="cta">
+        <button class="btn yes" id="btnYes">Sí 💘</button>
+        <button class="btn no" id="btnNo">No 😭</button>
+      </div>
+
+      <p class="hint" id="hint">Spoiler: el “No” no sirve 😌</p>
+    </section>
+  </main>
+
+  <!-- FINAL -->
+  <div class="overlay" id="finalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+      <h2 id="finalTitle">SABÍA QUE IBAS A DECIR QUE SÍ 💞</h2>
+      <p id="finalText">Entonces queda confirmado… mi San Valentín sos vos 💖</p>
+
+      <div class="final-photo">
+        <img id="finalImg" src="" alt="foto final" loading="lazy" decoding="async">
+      </div>
+
+      <button class="btn yes" id="closeFinal">Cerrar ✨</button>
+    </div>
+  </div>
+
+  <!-- Toast mini para cuando intenta NO -->
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <!-- Confetti -->
+  <canvas id="confetti"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
