@@ -1,147 +1,128 @@
-:root{
-  --bg1:#ffd6e7;
-  --bg2:#dbeafe;
-  --bg3:#fce7f3;
-
-  --card:#ffffffc4;
-  --stroke:#ffffff;
-  --shadow: 0 24px 80px rgba(0,0,0,.16);
-
-  --text:#151515;
-  --muted:#3a3a3a;
-
-  --yes:#22c55e;
-  --no:#ef4444;
-}
-
 body{
-  margin:0;
-  font-family: system-ui, Arial;
-  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-  overflow:hidden;
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ffd6e7,#dbeafe,#fce7f3);
+overflow:hidden;
 }
 
-/* CONTENEDOR PRINCIPAL */
 .wrap{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:18px;
-  position:relative;
-  z-index:5;
+min-height:100vh;
+display:grid;
+place-items:center;
+position:relative;
+z-index:5;
 }
 
 .card{
-  width:min(700px,90vw);
-  background:var(--card);
-  border-radius:25px;
-  padding:30px;
-  text-align:center;
-  box-shadow:var(--shadow);
-}
-
-h1{
-  margin:6px 0;
-}
-
-.subtitle{
-  color:var(--muted);
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
 .cta{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
+margin-top:20px;
+display:flex;
+gap:15px;
+justify-content:center;
 }
 
-/* BOTONES */
 .btn{
-  border:none;
-  padding:14px 22px;
-  font-size:18px;
-  border-radius:14px;
-  cursor:pointer;
-  box-shadow:0 14px 30px rgba(0,0,0,.2);
+padding:14px 22px;
+font-size:18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
 }
 
 .yes{
-  background:var(--yes);
-  color:white;
+background:#22c55e;
+color:white;
 }
 
 .no{
-  background:var(--no);
-  color:white;
+background:#ef4444;
+color:white;
 }
 
-/* FOTOS DISPERSAS */
 .photo-field{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
+position:fixed;
+inset:0;
+z-index:1;
+pointer-events:none;
 }
 
 .polaroid{
-  position:absolute;
-  width:170px;
-  aspect-ratio:1/1;
-  background:#fff;
-  border-radius:14px;
-  padding:10px;
-  box-shadow:0 18px 50px rgba(0,0,0,.18);
-  border:1px solid #fff;
-  opacity:.9;
-  transform: rotate(var(--rot));
+position:absolute;
+width:150px;
+background:white;
+padding:8px;
+border-radius:14px;
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+transform:rotate(var(--rot));
 }
 
 .polaroid img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:10px;
+width:100%;
+border-radius:10px;
 }
 
-/* CORAZONES FLOTANDO */
 #hearts{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:2;
+position:fixed;
+inset:0;
+z-index:2;
+pointer-events:none;
 }
 
 .heart{
-  position:absolute;
-  width:16px;
-  height:16px;
-  background:#ff2d55;
-  transform:rotate(45deg);
-  opacity:.25;
-  animation: floatUp linear infinite;
+width:16px;
+height:16px;
+background:#ff2d55;
+position:absolute;
+transform:rotate(45deg);
+animation:floatUp linear infinite;
+opacity:.3;
 }
 
 .heart::before,
 .heart::after{
-  content:"";
-  position:absolute;
-  width:16px;
-  height:16px;
-  background:#ff2d55;
-  border-radius:50%;
+content:"";
+width:16px;
+height:16px;
+background:#ff2d55;
+position:absolute;
+border-radius:50%;
 }
 
-.heart::before{
-  left:-8px;
-}
-
-.heart::after{
-  top:-8px;
-}
+.heart::before{ left:-8px }
+.heart::after{ top:-8px }
 
 @keyframes floatUp{
-  from{transform:translateY(0) rotate(45deg);}
-  to{transform:translateY(-120vh) r
+from{ transform:translateY(0) rotate(45deg) }
+to{ transform:translateY(-120vh) rotate(45deg) }
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.4);
+display:none;
+place-items:center;
+z-index:10;
+}
+
+.modal{
+background:white;
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+.final-photo img{
+width:250px;
+border-radius:15px;
+}
 
 
 
