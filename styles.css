@@ -12,265 +12,71 @@
 
   --yes:#22c55e;
   --no:#ef4444;
-
-  --radius:26px;
 }
-
-*{box-sizing:border-box}
-html,body{height:100%}
 
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 15% 10%, #ffffffaa, transparent 35%),
-    radial-gradient(circle at 85% 0%, #ffffff88, transparent 45%),
-    linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  font-family: system-ui, Arial;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
   overflow:hidden;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .wrap{
   min-height:100vh;
   display:grid;
   place-items:center;
   padding:18px;
   position:relative;
-  z-index:6;
+  z-index:5;
 }
 
 .card{
-  width:min(760px, 92vw);
+  width:min(700px,90vw);
   background:var(--card);
-  backdrop-filter: blur(8px);
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:26px;
+  border-radius:25px;
+  padding:30px;
   text-align:center;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid #00000010;
-  background:#ffffff80;
-  font-size:13px;
-  margin-bottom:10px;
+  box-shadow:var(--shadow);
 }
 
 h1{
-  margin:6px 0 8px;
-  font-size:clamp(24px, 4vw, 44px);
-  letter-spacing:-.02em;
+  margin:6px 0;
 }
 
 .subtitle{
-  margin:0 auto 18px;
-  max-width:52ch;
   color:var(--muted);
-  font-size:clamp(14px, 2vw, 18px);
-}
-
-.question-box{
-  border:1px solid #00000010;
-  background:#ffffff85;
-  border-radius:18px;
-  padding:16px;
-  margin: 12px auto 14px;
-  width:min(600px, 100%);
-}
-
-.qtext{
-  margin:0;
-  font-size:clamp(16px, 2.2vw, 20px);
-}
-
-.step{
-  margin:8px 0 0;
-  font-size:12px;
-  opacity:.75;
 }
 
 .cta{
+  margin-top:20px;
   display:flex;
   justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:10px;
-  position:relative;
-  z-index:7;
+  gap:15px;
 }
 
+/* BOTONES */
 .btn{
   border:none;
-  border-radius:16px;
   padding:14px 22px;
   font-size:18px;
-  cursor:pointer;
-  user-select:none;
-  box-shadow: 0 14px 34px rgba(0,0,0,.14);
-  transition: transform .12s ease, filter .12s ease;
-}
-.btn:hover{transform: translateY(-2px); filter:brightness(1.03)}
-.btn:active{transform: translateY(0px) scale(.99)}
-
-.yes{background: var(--yes); color:white;}
-.no{background: var(--no); color:white;}
-
-.hint{
-  margin:12px 0 0;
-  font-size:12px;
-  opacity:.75;
-}
-
-/* ===== Fotos dispersas (contenedor) ===== */
-.photo-field{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:2;
-}
-
-.polaroid{
-  position:absolute;
-  width:170px;
-  aspect-ratio: 1 / 1;
-  background:#fff;
   border-radius:14px;
-  padding:10px;
-  box-shadow: 0 18px 50px rgba(0,0,0,.18);
-  border:1px solid #ffffff;
-  transform: rotate(var(--rot)) translateZ(0);
-  opacity:.92;
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(0,0,0,.2);
 }
 
-.polaroid img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:10px;
-  display:block;
-  filter:saturate(1.05) contrast(1.02);
-}
-
-/* ===== Corazones flotando ===== */
-#hearts{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:4;
-}
-
-.heart{
-  position:absolute;
-  width:16px;
-  height:16px;
-  transform: rotate(45deg);
-  background:#ff2d55;
-  opacity:.25;
-  animation: floatUp linear infinite;
-}
-
-.heart::before, .heart::after{
-  content:"";
-  position:absolute;
-  width:16px;
-  height:16px;
-  background:#ff2d55;
-  border-radius:50%;
-}
-.heart::before{ left:-8px; top:0; }
-.heart::after{ left:0; top:-8px; }
-
-@keyframes floatUp{
-  from{ transform: translateY(0) rotate(45deg); opacity:.25; }
-  to  { transform: translateY(-120vh) rotate(45deg); opacity:0; }
-}
-
-/* ===== Final ===== */
-.overlay{
-  position:fixed;
-  inset:0;
-  display:none;
-  place-items:center;
-  background: rgba(0,0,0,.42);
-  z-index:10;
-  padding:18px;
-}
-
-.modal{
-  width:min(720px, 92vw);
-  background:white;
-  border-radius:22px;
-  padding:22px;
-  text-align:center;
-  box-shadow: 0 30px 90px rgba(0,0,0,.35);
-}
-
-.modal h2{
-  margin:0 0 8px;
-  font-size:clamp(22px, 3.6vw, 40px);
-}
-
-.modal p{
-  margin:0 0 16px;
-  color:#2c2c2c;
-  font-size:clamp(14px, 2vw, 18px);
-}
-
-.final-photo{
-  width:min(360px, 90%);
-  margin: 10px auto 16px;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #00000010;
-  box-shadow: 0 16px 45px rgba(0,0,0,.2);
-}
-
-.final-photo img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  display:block;
-}
-
-/* ===== Toast ===== */
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:22px;
-  transform:translateX(-50%);
-  background:#111827;
+.yes{
+  background:var(--yes);
   color:white;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:13px;
-  opacity:0;
-  pointer-events:none;
-  z-index:20;
-  transition: opacity .18s ease, transform .18s ease;
-}
-.toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(-4px);
 }
 
-/* ===== Confetti ===== */
-#confetti{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:30;
-  display:none;
+.no{
+  background:var(--no);
+  color:white;
 }
 
-/* móvil */
-@media (max-width:820px){
-  body{ overflow:auto; }
-  .polaroid{ width:120px; opacity:.85; }
-}.photo-field{
+/* FOTOS DISPERSAS */
+.photo-field{
   position:fixed;
   inset:0;
   pointer-events:none;
@@ -286,7 +92,7 @@ h1{
   padding:10px;
   box-shadow:0 18px 50px rgba(0,0,0,.18);
   border:1px solid #fff;
-  opacity:.92;
+  opacity:.9;
   transform: rotate(var(--rot));
 }
 
@@ -295,7 +101,47 @@ h1{
   height:100%;
   object-fit:cover;
   border-radius:10px;
-  display:block;
 }
+
+/* CORAZONES FLOTANDO */
+#hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+}
+
+.heart{
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:#ff2d55;
+  transform:rotate(45deg);
+  opacity:.25;
+  animation: floatUp linear infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:#ff2d55;
+  border-radius:50%;
+}
+
+.heart::before{
+  left:-8px;
+}
+
+.heart::after{
+  top:-8px;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0) rotate(45deg);}
+  to{transform:translateY(-120vh) r
+
 
 
